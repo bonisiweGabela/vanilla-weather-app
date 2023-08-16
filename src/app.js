@@ -1,9 +1,25 @@
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours;
-  let day = date.getDay;
-  return `${day} ${hours}:${minuntes}`;
-  let minuntes = date.getMinutes;
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
 
 function displayTemperature(response) {
@@ -22,5 +38,6 @@ function displayTemperature(response) {
 }
 
 let apiKey = "b37ef2363439c504480df8d372acfaa0";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Durban&appid=${apiKey}&units=metric`;
+let city = "Paris";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemperature);
