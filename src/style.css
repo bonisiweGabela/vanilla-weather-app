@@ -59,5 +59,10 @@ li ::first-letter {
 .weather-temperature .units {
   position: relative;
   font-size: 16px;
-  left: -10px;
+}
+
+.weather-temperature .active {
+  text-decoration: none;
+  color: rgb(33, 33, 33);
+  cursor: default;
 }
